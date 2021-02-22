@@ -186,8 +186,17 @@ class UserController {
     const { email, password } = request.all();
     let token = await auth.attempt(email, password)
     const user = (await User.findBy('email', email)).toJSON()
-    let isUser = false
-    token.roles = user.roles.map(roleMap => {
+    token.email = user.email
+    let data = {}
+    data.TRI_SESSION_INFO = token
+    return data
+  }
+  async test({ auth, request }) {
+    /* const { email, password } = request.all();
+    let token = await auth.attempt(email, password) */
+    const user = (await User.findBy('email', 'g.olmos@licancabur.cl')).toJSON()
+    //let isUser = false
+   /*  token.roles = user.roles.map(roleMap => {
       if (roleMap === 3) {
         isUser = true
       }
@@ -208,8 +217,8 @@ class UserController {
     token.email = user.email
     token.verify = user.verify
     let data = {}
-    data.TRI_SESSION_INFO = token
-    return data
+    data.TRI_SESSION_INFO = token */
+    return user
   }
 
   showUser({ auth, params }) {
