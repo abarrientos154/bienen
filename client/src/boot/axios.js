@@ -23,7 +23,7 @@ export default async ({ store, Vue }) => {
             message: 'Registro guardado con éxito!'
           })
         } else { // Es Login
-          localStorage.setItem('FLAAG_SESSION_INFO', JSON.stringify(response.data))
+          localStorage.setItem('TRI_SESSION_INFO', JSON.stringify(response.data))
         }
       }
     }
@@ -45,13 +45,13 @@ export default async ({ store, Vue }) => {
           message: 'Correo y/o Contraseña Incorrectos',
           color: 'black'
         })
-        localStorage.removeItem('FLAAG_SESSION_INFO')
+        localStorage.removeItem('TRI_SESSION_INFO')
       } else if (error.response.status === 403) {
         Notify.create({
           message: error.response.data,
           color: 'red'
         })
-        localStorage.removeItem('FLAAG_SESSION_INFO')
+        localStorage.removeItem('TRI_SESSION_INFO')
       } else if (error.response.status === 404) {
         Notify.create({
           message: 'Ruta no encontrada - 404',
@@ -114,7 +114,7 @@ export default async ({ store, Vue }) => {
     // Antes de enviar cada petición se añade el token si existe
 
     store.dispatch('generals/fetchAccessToken')
-    const token = (store.state.generals.FLAAG_SESSION_INFO !== null) ? store.state.generals.FLAAG_SESSION_INFO.token : false
+    const token = (store.state.generals.TRI_SESSION_INFO !== null) ? store.state.generals.TRI_SESSION_INFO.token : false
     // console.log('token', token)
     if (token) {
       if (!config.headers) { config.headers = {} }

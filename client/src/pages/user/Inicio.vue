@@ -200,5 +200,26 @@
 
 <script>
 export default {
+  data () {
+    return {
+      loading: false,
+      form: {
+      },
+      isPwd: true
+    }
+  },
+  mounted () {
+    this.getData()
+  },
+  methods: {
+    getData () {
+      this.$api.post('index', { id_planificacion: 13 }).then(v => {
+        if (v) {
+          this.plantas = v.areas
+        }
+        console.log(v)
+      })
+    }
+  }
 }
 </script>

@@ -35,7 +35,7 @@
 </template>
 
 <script>
-// import { mapMutations } from 'vuex'
+import { mapMutations } from 'vuex'
 import { required } from 'vuelidate/lib/validators'
 export default {
   data () {
@@ -53,10 +53,25 @@ export default {
     }
   },
   methods: {
+    ...mapMutations('generals', ['login']),
     loguear () {
-      if (this.form.email === 'admin@bienen.com' && this.form.password === '1234') {
-        this.$router.push('/inicio')
-      }
+      this.$q.loading.show({
+        message: 'Iniciando sesión'
+      })
+      this.$api.post('login', this.form).then(res => {
+        if (res) {
+          console.log(res, 'ressssssssssss')
+          this.user = res.TRI_SESSION_INFO
+          console.log('user', this.user)
+          this.login(res)
+          this.$router.push('/inicio')
+        } else {
+          console.log('error de ususario')
+          this.loading = false
+          this.$q.loading.hide()
+        }
+        this.$q.loading.hide()
+      })
     }
   }
 }
