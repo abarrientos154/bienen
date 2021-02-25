@@ -49,8 +49,23 @@ class ActividadeController {
     let fin = (await Actividade.query().where({id_planificacion: resp.id, id_area: data.area}).fetch()).toJSON()
     var info = {}
     info.pm01 = fin.filter(v => v.tipo == 'PM01')
+    info.pm01hh = 0
+    for (let x = 0; x < info.pm01.length; x++) {
+      const element = info.pm01[x]
+      info.pm01hh += element.duracion_real
+    }
     info.pm02 = fin.filter(v => v.tipo == 'PM02')
+    info.pm02hh = 0
+    for (let x = 0; x < info.pm02.length; x++) {
+      const element = info.pm02[x]
+      info.pm02hh += element.duracion_real
+    }
     info.pm03 = fin.filter(v => v.tipo == 'PM03')
+    info.pm03hh = 0
+    for (let x = 0; x < info.pm03.length; x++) {
+      const element = info.pm03[x]
+      info.pm03hh += element.duracion_real
+    }
     response.send(info)
   }
   async index ({ request, response, auth }) {
