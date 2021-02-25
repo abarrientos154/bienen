@@ -99,8 +99,10 @@
                     <q-item-label class="text-black">Distribucion de HH: 00h</q-item-label>
                 </q-card>
             </div>
-            <q-card class="bg-primary items-center q-pa-sm q-mx-xs justify-between" style="border-radius: 8px;">
+            <q-card class="bg-primary items-center q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
                 <q-item-label class="text-black text-weight-bolder">Adherencia al Plan</q-item-label>
+            </q-card>
+            <q-card class="row bg-secondary items-center q-pa-sm q-mx-xs justify-between" style="border-radius: 8px;">
             </q-card>
         </div>
         <q-separator vertical color="black" />
