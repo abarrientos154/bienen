@@ -1,35 +1,15 @@
 <template>
   <div style="height:100%;width:100%">
-    <div class="absolute-center" style="width:80%; height:85%">
-      <div class="absolute-center full-width">
-          <div class="row justify-center">
-            <q-input
-              style="width: 100%"
-              autofocus
-              outlined
-              v-model="form.email"
-              error-message="Este campo es requerido"
-              type="email"
-              placeholder="Ingrese su email" />
-          </div>
-          <div class="row justify-center q-mt-md">
-            <q-input
-              style="width: 100%"
-              autofocus
-              outlined
-              v-model="form.password"
-              error-message="Este campo es requerido"
-              :type="isPwd ? 'password' : 'text'"
-              placeholder="Ingrese su contraseña">
-                <template v-slot:append>
-                  <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer" @click="isPwd = !isPwd"/>
-                </template>
-            </q-input>
-          </div>
-          <div class="q-mt-md row justify-center">
-              <q-btn color="primary" text-color="white" label="Iniciar Sesión" :loading="loading" @click="loguear()"/>
-          </div>
-      </div>
+    <div class="absolute-center" style="width:35%; height:50%">
+      <q-card class="justify-between q-px-md q-py-lg column" style="border-radius: 12px; height:100%">
+          <q-input rounded outlined type="email" class="q-mb-md" v-model="form.email" label="Ingrese su email" dense error-message="Este campo es requerido"/>
+          <q-input rounded outlined :type="isPwd ? 'password' : 'text'" class="q-mb-md" v-model="form.password" label="Ingrese su contraseña" dense error-message="Este campo es requerido">
+            <template v-slot:append>
+              <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer" @click="isPwd = !isPwd"/>
+            </template>
+          </q-input>
+          <q-btn rounded color="primary" text-color="white" glossy label="Iniciar Sesión" @click="loguear()" :loading="loading"/>
+      </q-card>
     </div>
   </div>
 </template>
