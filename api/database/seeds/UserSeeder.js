@@ -18,29 +18,20 @@ const Factory = use('Factory')
 
 const userData = [
   {
-    _id: '5e90d6e6f75366526a680091',
-    email: 'admin@triyus.com',
-    password: 'triyus2020',
-    full_name: 'Administrador del Sistema',
-    roles: [1]
+    email: 'test@bienen.com',
+    password: 'bienen2021',
+    name: 'Administrador del Sistema'
   }
 ]
 
 class UserSeeder {
   async run () {
     for (let i of userData) {
-      let user = await User.find(i._id)
-      if (!user) {
+      //let user = await User.find(i._id)
+      if (true) {
         await User.create(i)
       }
       else {
-        user.email = i.email
-        user.password = i.password
-        user.name = i.name
-        user.lastName = i.lastName
-        user.roles = i.roles
-        user.country_id = i.country_id ? i.country_id : null
-        await user.save()
       }
     }
     console.log('Finished User')
