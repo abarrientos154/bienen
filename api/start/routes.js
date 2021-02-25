@@ -54,7 +54,14 @@ addPrefixToGroup(
   Route.group(() => {
     // Insertar rutas con protección de autenticación aquí
     Route.get("categoria", "CategoriaController.index")
-    Route.post("index", "ActividadeController.index")
+
+
+
+    Route.get("index", "ActividadeController.index")
+    Route.post("info_filtrada", "ActividadeController.info_filtrada")
+    Route.get("por_area/:id", "ActividadeController.por_area")
+
+
     Route.post('producto', 'UploadController.registrarProducto')
     Route.put('producto/:id', 'ProductoController.update')
     Route.get('producto_by_proveedor/:proveedor_id', 'ProductoController.productoByProveedor')

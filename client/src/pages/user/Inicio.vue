@@ -7,16 +7,17 @@
                 </q-avatar>
             </div>
             <q-list>
-                <q-card class="bg-primary q-pa-sm q-mx-xs q-mb-sm items-center row justify-between" v-for="i in 7" :key="i" style="border-radius: 8px;" @click="mostrarDatos(i)">
-                    <div class="col text-weight-bolder text-black">Planta: {{i}}</div>
+                <q-card class="bg-primary q-pa-sm q-mx-xs q-mb-sm items-center row justify-between" v-for="(i, index) in plantas" :key="index" style="border-radius: 8px;" @click="mostrarDatos(i)">
+                    <div class="col text-weight-bolder text-black">{{i.area}}</div>
                 </q-card>
             </q-list>
         </div>
         <q-separator vertical color="black"/>
         <div class="column col-6">
             <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
-                <q-item-label class="text-h6 text-black text-weight-bolder">Titulo de planta</q-item-label>
-                <q-select rounded outlined label="Semana" v-model="semana" dense :options="['Semana 1','Semana 2']" style="width: 125px"/>
+                <q-item-label class="text-h6 text-black text-weight-bolder">{{area.area ? area.area : 'Planta'}}</q-item-label>
+                <q-select :disable="!area" rounded outlined label="Año" v-model="year" dense :options="years" style="width: 125px" @input="change"/>
+                 <q-select :disable="!year" rounded outlined label="Semana" v-model="week" dense :options="weeks" style="width: 125px" @input="infoFiltrada"/>
             </q-card>
             <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
                 <q-item-label class="text-black text-weight-bolder">Actividades Planificadas</q-item-label>
@@ -24,7 +25,7 @@
             <div class="row justify-between">
                 <q-card class="bg-info col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
                     <q-item-section>
-                        <q-item-label class="text-black">Cantidad de PMO1: 00</q-item-label>
+                        <q-item-label class="text-black">Cantidad de PMO1: {{form.pm01 ? form.pm01.length : '00'}}</q-item-label>
                     </q-item-section>
                 </q-card>
                 <q-card class="bg-info col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
@@ -36,7 +37,7 @@
             <div class="row justify-between">
                 <q-card class="bg-positive col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
                     <q-item-section>
-                        <q-item-label class="text-black">Cantidad de PMO2: 00</q-item-label>
+                        <q-item-label class="text-black">Cantidad de PMO2: {{form.pm02 ? form.pm02.length : '00'}}</q-item-label>
                     </q-item-section>
                 </q-card>
                 <q-card class="bg-positive col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
@@ -57,13 +58,13 @@
                         <q-card class="bg-info col items-center row q-pa-sm q-ml-xs justify-between" style="border-radius: 0px;">
                             <q-item-section class="items-center">
                                 <q-item-label class="text-black">Hechos</q-item-label>
-                                <q-item-label class="text-black">00</q-item-label>
+                                <q-item-label class="text-black">{{form.pm01 ? form.pm01.filter(v => v.realizada == 'Si').length : '00'}}</q-item-label>
                             </q-item-section>
                         </q-card>
                         <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
                             <q-item-section class="items-center">
                                 <q-item-label class="text-black">No Hechos</q-item-label>
-                                <q-item-label class="text-black">00</q-item-label>
+                                <q-item-label class="text-black">{{form.pm01 ? form.pm01.filter(v => v.realizada == 'No').length : '00'}}</q-item-label>
                             </q-item-section>
                         </q-card>
                     </div>
@@ -76,13 +77,13 @@
                         <q-card class="bg-positive col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
                             <q-item-section class="items-center">
                                 <q-item-label class="text-black">Hechos</q-item-label>
-                                <q-item-label class="text-black">00</q-item-label>
+                                <q-item-label class="text-black">{{form.pm02 ? form.pm02.filter(v => v.realizada == 'Si').length : '00'}}</q-item-label>
                             </q-item-section>
                         </q-card>
                         <q-card class="bg-positive col items-center row q-pa-sm q-mr-xs justify-between" style="border-radius: 0px;">
                             <q-item-section class="items-center">
                                 <q-item-label class="text-black">No Hechos</q-item-label>
-                                <q-item-label class="text-black">00</q-item-label>
+                                <q-item-label class="text-black">{{form.pm02 ? form.pm02.filter(v => v.realizada == 'No').length : '00'}}</q-item-label>
                             </q-item-section>
                         </q-card>
                     </div>
@@ -93,7 +94,7 @@
             </q-card>
             <div class="row justify-between">
                 <q-card class="bg-warning col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
-                    <q-item-label class="text-black">Cantidad de PMO3: 00</q-item-label>
+                    <q-item-label class="text-black">Cantidad de PMO3: {{form.pm03 ? form.pm03.length : '00'}}</q-item-label>
                 </q-card>
                 <q-card class="bg-warning col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
                     <q-item-label class="text-black">Distribucion de HH: 00h</q-item-label>
@@ -107,7 +108,7 @@
         <div class="column col-3">
             <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
                 <q-item-section>
-                    <q-item-label class="text-black text-weight-bolder">Nombre</q-item-label>
+                    <q-item-label class="text-black text-weight-bolder">{{user.name}}</q-item-label>
                 </q-item-section>
                 <q-item-section avatar>
                     <q-avatar size="40px">
@@ -210,23 +211,66 @@ export default {
       loading: false,
       form: {
       },
+      user: {
+        name: 'Invitado'
+      },
       isPwd: true,
-      semana: ''
+      semana: '',
+      plantas: [],
+      years: [],
+      year: '',
+      weeks: [],
+      week: '',
+      allData: [],
+      area: {}
     }
   },
   mounted () {
     this.getData()
   },
   methods: {
-    getData () {
-      this.$api.post('index', { id_planificacion: 13 }).then(v => {
+    infoFiltrada () {
+      this.$q.loading.show({
+        message: 'Cargando Datos'
+      })
+      this.$api.post('info_filtrada', { week: this.week, year: this.year, area: this.area.id }).then(v => {
         if (v) {
+          this.form = v
+          console.log(v)
+          this.$q.loading.hide()
+        }
+        this.$q.loading.hide()
+      })
+    },
+    change () {
+      console.log(this.allData, this.year)
+      this.weeks = this.allData.data[this.year].sort(function (a, b) {
+        return a - b
+      })
+    },
+    getData () {
+      this.$api.get('index').then(v => {
+        if (v) {
+          this.user = v.user
           this.plantas = v.areas
         }
         console.log(v)
       })
     },
-    mostrarDatos (index) {
+    mostrarDatos (element) {
+      this.$q.loading.show({
+        message: 'Cargando Datos'
+      })
+      this.$api.get('por_area/' + element.id).then(v => {
+        if (v) {
+          this.area = element
+          this.years = v.years
+          this.allData = v
+          this.$q.loading.hide()
+        }
+        console.log(v)
+        this.$q.loading.hide()
+      })
     //   console.log('mostrando datos de la planta' + index)
     }
   }
