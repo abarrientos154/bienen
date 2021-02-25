@@ -20,8 +20,16 @@ const userData = [
   {
     email: 'test@bienen.com',
     password: 'bienen2021',
-    name: 'Administrador del Sistema'
+    name: 'Administrador del Sistema',
+    remember_token: 1
+  },
+   {
+    email: 'test2@bienen.com',
+    password: 'bienen2021',
+    name: 'Administrador del Sistema2',
+    remember_token: 2
   }
+
 ]
 
 class UserSeeder {

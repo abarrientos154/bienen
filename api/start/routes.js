@@ -40,7 +40,7 @@ addPrefixToGroup(
     Route.post("register", "UserController.register")
     Route.get("validate_email/:email", "UserController.validateEmail")
     Route.get("test", "UserController.test")
-
+ 
     Route.get("plans", "PlanController.index")
     Route.get('productos_img/:file', 'UploadController.getFileByDirectoryProductos')
     Route.get('necesidad_img/:file', 'UploadController.getFileByDirectoryNecesidad')
@@ -54,7 +54,7 @@ addPrefixToGroup(
   Route.group(() => {
     // Insertar rutas con protección de autenticación aquí
     Route.get("categoria", "CategoriaController.index")
-
+    Route.post("index", "ActividadeController.index")
     Route.post('producto', 'UploadController.registrarProducto')
     Route.put('producto/:id', 'ProductoController.update')
     Route.get('producto_by_proveedor/:proveedor_id', 'ProductoController.productoByProveedor')

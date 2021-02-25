@@ -6,12 +6,12 @@ export function loginStop (state, errorMessage) {
   state.loginError = errorMessage
 }
 
-export function updateAccessToken (state, FLAAG_SESSION_INFO) {
-  if (FLAAG_SESSION_INFO) {
-    state.FLAAG_SESSION_INFO = FLAAG_SESSION_INFO
-    // state.userFullName = FLAAG_SESSION_INFO.name + ' ' + FLAAG_SESSION_INFO.lastName
+export function updateAccessToken (state, TRI_SESSION_INFO) {
+  if (TRI_SESSION_INFO) {
+    state.TRI_SESSION_INFO = TRI_SESSION_INFO
+    // state.userFullName = TRI_SESSION_INFO.name + ' ' + TRI_SESSION_INFO.lastName
   } else {
-    state.FLAAG_SESSION_INFO = {}
+    state.TRI_SESSION_INFO = {}
   }
 }
 export function setCurrentModule (state, payload) {
@@ -46,8 +46,8 @@ export function showCurrentMonth (state) {
   state.customShowListable = 'Mes Actual'
 }
 export function login (state, data) {
-  localStorage.setItem('FLAAG_SESSION_INFO', JSON.stringify(data.FLAAG_SESSION_INFO))
-  state.FLAAG_SESSION_INFO = data.FLAAG_SESSION_INFO
+  localStorage.setItem('TRI_SESSION_INFO', JSON.stringify(data.TRI_SESSION_INFO))
+  state.TRI_SESSION_INFO = data.TRI_SESSION_INFO
   state.user = data.user
 }
 export function dataUser (state, data) {
@@ -55,13 +55,13 @@ export function dataUser (state, data) {
   state.user = data
 }
 export function logout (state) {
-  localStorage.removeItem('FLAAG_SESSION_INFO')
-  state.FLAAG_SESSION_INFO = ''
+  localStorage.removeItem('TRI_SESSION_INFO')
+  state.TRI_SESSION_INFO = ''
   state.user = ''
 }
 
 export function saveDataEvent (state, data) {
-  localStorage.setItem('HEV_DATA_EVENT', JSON.stringify(data))
+  localStorage.setItem('TRI_SESSION_INFO', JSON.stringify(data))
   state.HEV_DATA_EVENT = data.HEV_DATA_EVENT
   state.data_event = data.data_event
 }

@@ -11,9 +11,6 @@
 export default {
   name: 'PageIndex',
   mounted () {
-    this.$api.post('login', { email: 'test@bienen.com', password: 'bienen2021' }).then(v => {
-      console.log(v)
-    })
   }
 }
 </script>
