@@ -1,10 +1,8 @@
 <template>
     <div class="row justify-between" style="height: 100%;">
         <div class="column col-2">
-            <div avatar class="row justify-center">
-                <q-avatar rounded class="q-mb-sm" style="width: 75px; height: 75px">
-                    <img src="">
-                </q-avatar>
+            <div class="q-mb-md row justify-center">
+                <q-img :src="url" spinner-color="white" style="height: auto; width: 50px"/>
             </div>
             <q-list>
                 <q-card class="bg-primary q-pa-sm q-mx-xs q-mb-sm items-center row justify-between" v-for="(i, index) in plantas" :key="index" style="border-radius: 8px;" @click="mostrarDatos(i)">
@@ -16,8 +14,10 @@
         <div class="column col-6">
             <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
                 <q-item-label class="text-h6 text-black text-weight-bolder">{{area.area ? area.area : 'Planta'}}</q-item-label>
-                <q-select :disable="!area" rounded outlined label="Año" v-model="year" dense :options="years" style="width: 125px" @input="change"/>
-                 <q-select :disable="!year" rounded outlined label="Semana" v-model="week" dense :options="weeks" style="width: 125px" @input="infoFiltrada"/>
+                <div class="row">
+                    <q-select class="col-1 q-ml-xs" :disable="!area" rounded outlined label="Año" v-model="year" dense :options="years" style="width: 80px" @input="change"/>
+                    <q-select class="col-2 q-ml-xs" :disable="!year" rounded outlined label="Semana" v-model="week" dense :options="weeks" style="width: 110px" @input="infoFiltrada"/>
+                </div>
             </q-card>
             <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
                 <q-item-label class="text-black text-weight-bolder">Actividades Planificadas</q-item-label>
@@ -35,12 +35,12 @@
                 </q-card>
             </div>
             <div class="row justify-between">
-                <q-card class="bg-positive col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
+                <q-card class="bg-info col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
                     <q-item-section>
                         <q-item-label class="text-black">Cantidad de PMO2: {{form.pm02 ? form.pm02.length : '00'}}</q-item-label>
                     </q-item-section>
                 </q-card>
-                <q-card class="bg-positive col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
+                <q-card class="bg-info col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
                     <q-item-section>
                         <q-item-label class="text-black">Distribucion de HH: {{form.pm02hh ? form.pm02hh : '00'}}h</q-item-label>
                     </q-item-section>
@@ -74,13 +74,13 @@
                         <q-item-label class="text-center text-black">PMO2</q-item-label>
                     </q-card>
                     <div class="row">
-                        <q-card class="bg-positive col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
+                        <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
                             <q-item-section class="items-center">
                                 <q-item-label class="text-black">Hechos</q-item-label>
                                 <q-item-label class="text-black">{{form.pm02 ? form.pm02.filter(v => v.realizada == 'Si').length : '00'}}</q-item-label>
                             </q-item-section>
                         </q-card>
-                        <q-card class="bg-positive col items-center row q-pa-sm q-mr-xs justify-between" style="border-radius: 0px;">
+                        <q-card class="bg-info col items-center row q-pa-sm q-mr-xs justify-between" style="border-radius: 0px;">
                             <q-item-section class="items-center">
                                 <q-item-label class="text-black">No Hechos</q-item-label>
                                 <q-item-label class="text-black">{{form.pm02 ? form.pm02.filter(v => v.realizada == 'No').length : '00'}}</q-item-label>
@@ -93,10 +93,10 @@
                 <q-item-label class="text-black text-weight-bolder">Actividades Imprevistas</q-item-label>
             </q-card>
             <div class="row justify-between">
-                <q-card class="bg-warning col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
+                <q-card class="bg-info col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
                     <q-item-label class="text-black">Cantidad de PMO3: {{form.pm03 ? form.pm03.length : '00'}}</q-item-label>
                 </q-card>
-                <q-card class="bg-warning col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
+                <q-card class="bg-info col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
                     <q-item-label class="text-black">Distribucion de HH: {{form.pm03hh ? form.pm03hh : '00'}}h</q-item-label>
                 </q-card>
             </div>
@@ -113,12 +113,12 @@
                 <q-item-section>
                     <q-item-label class="text-black text-weight-bolder">{{user.name}}</q-item-label>
                 </q-item-section>
-                <q-btn round size="10px" color="secondary" icon="logout" @click="$router.push('/login')"/>
                 <q-item-section avatar>
                     <q-avatar size="40px">
                         <img src="">
                     </q-avatar>
                 </q-item-section>
+                <q-btn class="q-ml-xs" round size="8px" color="secondary" icon="logout" @click="$router.push('/login')"/>
             </q-card>
             <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm" style="border-radius: 8px;">
                 <q-avatar rounded class="q-mb-sm" style="width: 100%; height: 100px;">
@@ -152,13 +152,13 @@
                     <q-item-label class="text-center text-black">PMO2</q-item-label>
                 </q-card>
                 <div class="row">
-                    <q-card class="bg-positive col items-center row q-pa-sm q-ml-xs justify-between" style="border-radius: 0px;">
+                    <q-card class="bg-info col items-center row q-pa-sm q-ml-xs justify-between" style="border-radius: 0px;">
                         <q-item-section class="items-center">
                             <q-item-label class="text-black">Hechos</q-item-label>
                             <q-item-label class="text-black">00</q-item-label>
                         </q-item-section>
                     </q-card>
-                    <q-card class="bg-positive col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
+                    <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
                         <q-item-section class="items-center">
                             <q-item-label class="text-black">No Hechos</q-item-label>
                             <q-item-label class="text-black">00</q-item-label>
@@ -177,7 +177,7 @@
                             <q-item-label class="text-black">00</q-item-label>
                         </q-item-section>
                     </q-card>
-                    <q-card class="bg-positive col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
+                    <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
                         <q-item-section class="items-center">
                             <q-item-label class="text-black">PMO2</q-item-label>
                             <q-item-label class="text-black">00</q-item-label>
@@ -190,13 +190,13 @@
                     <q-item-label class="text-center text-black">PMO3</q-item-label>
                 </q-card>
                 <div class="row">
-                    <q-card class="bg-warning col items-center row q-pa-sm q-ml-xs justify-between" style="border-radius: 0px;">
+                    <q-card class="bg-info col items-center row q-pa-sm q-ml-xs justify-between" style="border-radius: 0px;">
                         <q-item-section class="items-center">
                             <q-item-label class="text-black">Cantidad</q-item-label>
                             <q-item-label class="text-black">00</q-item-label>
                         </q-item-section>
                     </q-card>
-                    <q-card class="bg-warning col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
+                    <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
                         <q-item-section class="items-center">
                             <q-item-label class="text-black">HH</q-item-label>
                             <q-item-label class="text-black">00</q-item-label>
@@ -228,6 +228,7 @@ export default {
       week: '',
       allData: [],
       area: {},
+      url: 'Logotipo.png',
       chartData: [
         ['Element', 'Realizados', 'No Realizados', { role: 'annotation' }],
         ['Mes', 20, 80, ''],
