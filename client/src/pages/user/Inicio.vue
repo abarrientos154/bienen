@@ -114,16 +114,12 @@
                     <q-item-label class="text-black text-weight-bolder">{{user.name}}</q-item-label>
                 </q-item-section>
                 <q-item-section avatar>
-                    <q-avatar size="40px">
-                        <img src="">
-                    </q-avatar>
+                    <q-avatar class="bg-white" icon="person" size="40px"></q-avatar>
                 </q-item-section>
                 <q-btn class="q-ml-xs" round size="8px" color="secondary" icon="logout" @click="$router.push('/login')"/>
             </q-card>
             <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm" style="border-radius: 8px;">
-                <q-avatar rounded class="q-mb-sm" style="width: 100%; height: 100px;">
-                    <img src="">
-                </q-avatar>
+                <q-avatar rounded icon="insert_photo" class="q-mb-sm" style="width: 100%; height: 100px;"></q-avatar>
             </q-card>
             <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
                     <q-item-label class="text-black text-weight-bolder">Resumen del Mes</q-item-label>
