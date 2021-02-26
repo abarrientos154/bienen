@@ -18,15 +18,15 @@ const Factory = use('Factory')
 
 const userData = [
   {
-    email: 'test@bienen.com',
+    email: 'npi@mel.cl',
     password: 'bienen2021',
     name: 'Administrador del Sistema',
     remember_token: 1
   },
    {
-    email: 'test2@bienen.com',
+    email: 'cho@mel.cl',
     password: 'bienen2021',
-    name: 'Administrador del Sistema2',
+    name: 'Administrador del Sistema',
     remember_token: 2
   }
 
