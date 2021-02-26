@@ -104,6 +104,7 @@
                 <q-item-label class="text-black text-weight-bolder">Adherencia al Plan</q-item-label>
             </q-card>
             <q-card class="row bg-secondary items-center q-pa-sm q-mx-xs justify-between" style="border-radius: 8px;">
+                <GChart style="width: 100%" type="ColumnChart" :data="chartData" :options="chartOptions"/>
             </q-card>
         </div>
         <q-separator vertical color="black" />
@@ -112,6 +113,7 @@
                 <q-item-section>
                     <q-item-label class="text-black text-weight-bolder">{{user.name}}</q-item-label>
                 </q-item-section>
+                <q-btn round size="10px" color="secondary" icon="logout" @click="$router.push('/login')"/>
                 <q-item-section avatar>
                     <q-avatar size="40px">
                         <img src="">
@@ -207,6 +209,7 @@
 </template>
 
 <script>
+import { GChart } from 'vue-google-charts'
 export default {
   data () {
     return {
@@ -224,7 +227,23 @@ export default {
       weeks: [],
       week: '',
       allData: [],
-      area: {}
+      area: {},
+      chartData: [
+        ['Element', 'Realizados', 'No Realizados', { role: 'annotation' }],
+        ['Mes', 20, 80, ''],
+        ['Mes', 40, 60, ''],
+        ['Mes', 60, 40, ''],
+        ['Mes', 80, 20, ''],
+        ['Mes', 99, 1, '']
+      ],
+      chartOptions: {
+        title: 'Porcentaje de adherencia al plan semanal',
+        height: 200,
+        bar: { groupWidth: '50%' },
+        legend: { position: 'top' },
+        isStacked: 'percent',
+        vAxis: { minValue: 0, ticks: [0, 0.25, 0.5, 0.75, 1] }
+      }
     }
   },
   mounted () {
@@ -275,6 +294,9 @@ export default {
       })
     //   console.log('mostrando datos de la planta' + index)
     }
+  },
+  components: {
+    GChart
   }
 }
 </script>

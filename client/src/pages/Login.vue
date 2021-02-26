@@ -9,6 +9,7 @@
             </template>
           </q-input>
           <q-btn class="q-mx-xl" rounded color="primary" text-color="white" glossy label="Iniciar Sesión" @click="loguear()" :loading="loading"/>
+          <q-btn rounded color="secondary" text-color="white" glossy label="Iniciar Sesión" @click="$router.push('/inicio')" :loading="loading"/>
       </q-card>
     </div>
   </div>
