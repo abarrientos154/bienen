@@ -103,8 +103,8 @@
             <q-card class="bg-primary items-center q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
                 <q-item-label class="text-black text-weight-bolder">Adherencia al Plan</q-item-label>
             </q-card>
-            <q-card class="row bg-secondary items-center q-pa-sm q-mx-xs justify-between" style="border-radius: 8px;">
-                <GChart style="width: 100%" type="ColumnChart" :data="chartData" :options="chartOptions"/>
+            <q-card v-if="bar" class="row bg-secondary items-center q-pa-sm q-mx-xs justify-between" style="border-radius: 8px;">
+                <GChart style="width: 100%" type="ColumnChart" :data="info" :options="chartOptions"/>
             </q-card>
         </div>
         <q-separator vertical color="black" />
@@ -223,15 +223,16 @@ export default {
       weeks: [],
       week: '',
       allData: [],
+      info: [],
+      bar: false,
       area: {},
       url: 'Logotipo.png',
-      chartData: [
-        ['Element', 'Realizados', 'No Realizados', { role: 'annotation' }],
-        ['Mes', 20, 80, ''],
-        ['Mes', 40, 60, ''],
-        ['Mes', 60, 40, ''],
-        ['Mes', 80, 20, ''],
-        ['Mes', 99, 1, '']
+      chartDataHeader: ['Element', 'Realizadas', 'No Realizadas', { role: 'annotation' }],
+      charDataRows: [
+        ['Mes', 20, 80, '']
+      ],
+      updatedChartData: [
+        ['Mes', 20, 80, '']
       ],
       chartOptions: {
         title: 'Porcentaje de adherencia al plan semanal',
@@ -246,7 +247,19 @@ export default {
   mounted () {
     this.getData()
   },
+  computed: {
+    chartData () {
+      console.log([this.chartDataHeader, ...this.updatedChartData], 'www')
+      return [this.chartDataHeader, ...this.updatedChartData]
+    }
+  },
   methods: {
+    updateData (data) {
+      console.log(this.updatedChartData, data, 'luj')
+      this.updatedChartData[0] = data
+      this.info = [this.chartDataHeader, ...this.updatedChartData]
+      this.bar = true
+    },
     infoFiltrada () {
       this.$q.loading.show({
         message: 'Cargando Datos'
@@ -254,7 +267,11 @@ export default {
       this.$api.post('info_filtrada', { week: this.week, year: this.year, area: this.area.id }).then(v => {
         if (v) {
           this.form = v
+          console.log(this.chartData)
+          const a = ['Actividades', this.form.pm01.filter(v => v.realizada === 'Si').length + this.form.pm02.filter(v => v.realizada === 'Si').length, this.form.pm01.filter(v => v.realizada === 'No').length + this.form.pm02.filter(v => v.realizada === 'No').length, '']
+          this.updateData(a)
           console.log(v)
+          console.log(this.chartData)
           this.$q.loading.hide()
         }
         this.$q.loading.hide()
