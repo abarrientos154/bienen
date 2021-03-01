@@ -4,11 +4,18 @@
             <div class="q-mb-md row justify-center">
                 <q-img :src="url" spinner-color="white" style="height: auto; width: 50px"/>
             </div>
-            <q-list>
+            <!-- <q-list>
                 <q-card class="bg-primary q-pa-sm q-mx-xs q-mb-sm items-center row justify-between" v-for="(i, index) in plantas" :key="index" style="border-radius: 8px;" @click="mostrarDatos(i)">
                     <div class="col text-weight-bolder text-black">{{i.area}}</div>
                 </q-card>
-            </q-list>
+            </q-list> -->
+            <div class="q-pa-md" style="width: 100%">
+                <q-list bordered padding class="rounded-borders text-primary">
+                    <q-item clickable v-ripple :active="seleccion === i" v-for="(i, index) in plantas" :key="index" @click="mostrarDatos(i)" active-class="my-menu-link">
+                        <q-item-section>{{i.area}}</q-item-section>
+                    </q-item>
+                </q-list>
+            </div>
         </div>
         <q-separator vertical color="black"/>
         <div class="column col-6">
@@ -119,7 +126,7 @@
                 <q-btn class="q-ml-xs" round size="8px" color="secondary" icon="logout" @click="$router.push('/login')"/>
             </q-card>
             <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm" style="border-radius: 8px;">
-                <q-avatar rounded icon="insert_photo" class="q-mb-sm" style="width: 100%; height: 100px;"></q-avatar>
+                <q-avatar rounded icon="insert_photo" class=" bg-white" style="width: 100%; height: 100px;"></q-avatar>
             </q-card>
             <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
                     <q-item-label class="text-black text-weight-bolder">Resumen del Mes</q-item-label>
@@ -234,6 +241,14 @@ export default {
       updatedChartData: [
         ['Mes', 20, 80, '']
       ],
+      seleccion: '',
+      datos: [
+        { name: 'a' },
+        { name: 'b' },
+        { name: 'c' },
+        { name: 'd' },
+        { name: 'e' }
+      ],
       chartOptions: {
         title: 'Porcentaje de adherencia al plan semanal',
         height: 200,
@@ -293,6 +308,7 @@ export default {
       })
     },
     mostrarDatos (element) {
+      this.seleccion = element
       this.$q.loading.show({
         message: 'Cargando Datos'
       })
@@ -314,3 +330,9 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+.my-menu-link
+  color: white
+  background: blue
+</style>
