@@ -256,10 +256,13 @@ export default {
         legend: { position: 'top' },
         isStacked: 'percent',
         vAxis: { minValue: 0, ticks: [0, 0.25, 0.5, 0.75, 1] }
-      }
+      },
+      pp: ''
     }
   },
   mounted () {
+    this.pp = this.$q.platform.is.desktop
+    console.log(this.pp)
     this.getData()
   },
   computed: {
