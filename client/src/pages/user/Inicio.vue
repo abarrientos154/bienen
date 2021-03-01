@@ -165,83 +165,9 @@
                         </q-card>
                     </div>
                 </div>
-<<<<<<< HEAD
                 <div class="q-mb-sm">
                     <q-card class="bg-secondary items-center q-pa-xs q-ml-xs justify-between" style="border-radius: 0px;">
                         <q-item-label class="text-center text-black">Total Actividades</q-item-label>
-=======
-            </div>
-            <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
-                <q-item-label class="text-black text-weight-bolder">Actividades Imprevistas</q-item-label>
-            </q-card>
-            <div class="row justify-between">
-                <q-card class="bg-info col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
-                    <q-item-label class="text-black">Cantidad de PMO3: {{form.pm03 ? form.pm03.length : '00'}}</q-item-label>
-                </q-card>
-                <q-card class="bg-info col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
-                    <q-item-label class="text-black">Distribucion de HH: {{form.pm03hh ? form.pm03hh : '00'}}h</q-item-label>
-                </q-card>
-            </div>
-            <q-card class="bg-primary items-center q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
-                <q-item-label class="text-black text-weight-bolder">Adherencia al Plan</q-item-label>
-            </q-card>
-            <q-card v-if="bar" class="row bg-secondary items-center q-pa-sm q-mx-xs justify-between" style="border-radius: 8px;">
-                <GChart style="width: 100%" type="ColumnChart" :data="info" :options="chartOptions"/>
-            </q-card>
-        </div>
-        <q-separator vertical color="black" />
-        <div class="column col-3">
-            <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
-                <q-item-section>
-                    <q-item-label class="text-black text-weight-bolder">{{user.name}}</q-item-label>
-                </q-item-section>
-                <q-item-section avatar>
-                    <q-avatar class="bg-white" icon="person" size="40px"></q-avatar>
-                </q-item-section>
-                <q-btn class="q-ml-xs" round size="8px" color="secondary" icon="logout" @click="$router.push('/login')"/>
-            </q-card>
-            <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm" style="border-radius: 8px;">
-                <q-avatar rounded icon="insert_photo" class=" bg-white" style="width: 100%; height: 100px;"></q-avatar>
-            </q-card>
-            <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
-                    <q-item-label class="text-black text-weight-bolder">Resumen del Mes</q-item-label>
-            </q-card>
-            <div class="q-mb-sm">
-                <q-card class="bg-secondary items-center q-pa-xs q-ml-xs justify-between" style="border-radius: 0px;" >
-                    <q-item-label class="text-center text-black">PMO1</q-item-label>
-                </q-card>
-                <div class="row">
-                    <q-card class="bg-info col items-center row q-pa-sm q-ml-xs justify-between" style="border-radius: 0px;">
-                        <q-item-section class="items-center">
-                            <q-item-label class="text-black">Hechos</q-item-label>
-                            <q-item-label class="text-black">00</q-item-label>
-                        </q-item-section>
-                    </q-card>
-                    <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
-                        <q-item-section class="items-center">
-                            <q-item-label class="text-black">No Hechos</q-item-label>
-                            <q-item-label class="text-black">00</q-item-label>
-                        </q-item-section>
-                    </q-card>
-                </div>
-            </div>
-            <div class="q-mb-sm">
-                <q-card class="bg-secondary items-center q-pa-xs q-ml-xs justify-between" style="border-radius: 0px;">
-                    <q-item-label class="text-center text-black">PMO2</q-item-label>
-                </q-card>
-                <div class="row">
-                    <q-card class="bg-info col items-center row q-pa-sm q-ml-xs justify-between" style="border-radius: 0px;">
-                        <q-item-section class="items-center">
-                            <q-item-label class="text-black">Hechos</q-item-label>
-                            <q-item-label class="text-black">00</q-item-label>
-                        </q-item-section>
-                    </q-card>
-                    <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
-                        <q-item-section class="items-center">
-                            <q-item-label class="text-black">No Hechos</q-item-label>
-                            <q-item-label class="text-black">00</q-item-label>
-                        </q-item-section>
->>>>>>> 13571757a86e0e619e72469af2b7ce29bd5a3579
                     </q-card>
                     <div class="row">
                         <q-card class="bg-info col items-center row q-pa-sm q-ml-xs justify-between" style="border-radius: 0px;">
