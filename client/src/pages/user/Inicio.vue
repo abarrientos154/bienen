@@ -206,7 +206,7 @@
             </div>
         </div>
         <div>
-            <q-layout view="lhh LpR lff" container style="height: 500px">
+            <q-layout view="lhh LpR lff" style="height: auto; width: 100%">
                 <q-header reveal class="bg-primary">
                     <q-toolbar>
                         <q-btn flat @click="drawerLeft = !drawerLeft" round dense icon="menu" />
