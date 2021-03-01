@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="q-pa-sm row justify-between" style="height: 100%;" v-if="movil === false">
+        <div class="q-pa-sm row justify-between" style="height: 100%;" v-if="pp">
             <div class="column col-2">
                 <div class="q-mb-md row justify-center">
                     <q-img :src="url" spinner-color="white" style="height: auto; width: 50px"/>
@@ -106,8 +106,8 @@
                 <q-card class="bg-primary items-center q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
                     <q-item-label class="text-black text-weight-bolder">Adherencia al Plan</q-item-label>
                 </q-card>
-                <q-card class="row bg-secondary items-center q-pa-sm q-mx-xs justify-between" style="border-radius: 8px;">
-                    <GChart style="width: 100%" type="ColumnChart" :data="chartData" :options="chartOptions"/>
+                <q-card v-if="bar" class="row bg-secondary items-center q-pa-sm q-mx-xs justify-between" style="border-radius: 8px;">
+                    <GChart style="width: 100%" type="ColumnChart" :data="info" :options="chartOptions"/>
                 </q-card>
             </div>
             <q-separator vertical color="black" />
@@ -205,8 +205,13 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
         <div>
             <q-layout view="lhh LpR lff" style="height: auto; width: 100%">
+=======
+        <div v-if="!pp">
+            <q-layout view="lhh LpR lff" container style="height: 600px">
+>>>>>>> 2132da7d3f6df08517f94341a8d187f2bc4cdb3c
                 <q-header reveal class="bg-primary">
                     <q-toolbar>
                         <q-btn flat @click="drawerLeft = !drawerLeft" round dense icon="menu" />
@@ -325,8 +330,8 @@
                                 <q-card class="bg-primary items-center q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
                                     <q-item-label class="text-black text-weight-bolder">Adherencia al Plan</q-item-label>
                                 </q-card>
-                                <q-card class="row bg-secondary items-center q-pa-sm q-mx-xs justify-between" style="border-radius: 8px;">
-                                    <GChart style="width: 100%" type="ColumnChart" :data="chartData" :options="chartOptions"/>
+                                <q-card v-if="bar" class="row bg-secondary items-center q-pa-sm q-mx-xs justify-between" style="border-radius: 8px;">
+                                    <GChart style="width: 100%" type="ColumnChart" :data="info" :options="chartOptions"/>
                                 </q-card>
                             </div>
                         </div>
