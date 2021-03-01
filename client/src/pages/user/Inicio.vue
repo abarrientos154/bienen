@@ -226,8 +226,7 @@
                             <div class="q-mb-sm row justify-center">
                                 <q-img :src="url" spinner-color="white" style="height: auto; width: 50px"/>
                             </div>
-                            <div>
-                            </div>
+                            <div class="q-mb-sm row text-center justify-center">{{area.area ? area.area : 'Plantas'}}</div>
                             <div class="q-pa-sm" style="width: 100%">
                                 <q-list bordered padding class="rounded-borders text-primary">
                                     <q-item clickable v-ripple :active="seleccion === i" v-for="(i, index) in plantas" :key="index" @click="mostrarDatos(i)" active-class="my-menu-link">

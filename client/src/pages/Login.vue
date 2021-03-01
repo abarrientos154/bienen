@@ -1,6 +1,6 @@
 <template>
   <div style="height:100%;width:100%">
-    <div class="absolute-center" style="width:30%; height:auto">
+    <div class="absolute-center" style="width:250px; height:auto">
       <q-card class="justify-between items-center q-px-md q-py-lg column" style="border-radius: 12px; height:100%">
         <div class="q-mb-md row justify-center">
           <q-img :src="url" spinner-color="white" style="height: auto; width: 100px"/>
