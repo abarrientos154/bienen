@@ -1,5 +1,5 @@
 <template>
-  <router-view class="q-pa-sm" />
+  <router-view/>
 </template>
 
 <script>
