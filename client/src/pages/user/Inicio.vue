@@ -205,13 +205,8 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-        <div>
-            <q-layout view="lhh LpR lff" style="height: auto; width: 100%">
-=======
         <div v-if="!pp">
-            <q-layout view="lhh LpR lff" container style="height: 600px">
->>>>>>> 2132da7d3f6df08517f94341a8d187f2bc4cdb3c
+            <q-layout view="lhh LpR lff" style="height: auto; width: 100%">
                 <q-header reveal class="bg-primary">
                     <q-toolbar>
                         <q-btn flat @click="drawerLeft = !drawerLeft" round dense icon="menu" />
@@ -384,13 +379,6 @@ export default {
       seleccion: '',
       movil: true,
       drawerLeft: false,
-      datos: [
-        { name: 'a' },
-        { name: 'b' },
-        { name: 'c' },
-        { name: 'd' },
-        { name: 'e' }
-      ],
       chartOptions: {
         title: 'Porcentaje de adherencia al plan semanal',
         height: 200,
