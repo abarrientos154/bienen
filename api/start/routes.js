@@ -59,6 +59,7 @@ addPrefixToGroup(
 
     Route.get("index", "ActividadeController.index")
     Route.post("info_filtrada", "ActividadeController.info_filtrada")
+    Route.post("info_filtrada_annio", "ActividadeController.info_filtrada_annio")
     Route.get("por_area/:id", "ActividadeController.por_area")
 
 

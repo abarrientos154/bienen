@@ -68,6 +68,55 @@ class ActividadeController {
     }
     response.send(info)
   }
+  async info_filtrada_annio ({ request, response, auth }) {
+    const data = request.all()
+    let tareas = (await Actividade.query().where({id_area: data.area}).fetch()).toJSON()
+    var planificaciones = []
+    for (let x = 0; x < tareas.length; x++) {
+      const element = tareas[x];
+      if (!planificaciones.find(v => v == element.id_planificacion)) {
+        planificaciones.push(element.id_planificacion)
+      }
+    }
+    var totales_por_year = {}
+    for (let x = 0; x < planificaciones.length; x++) {
+      const element = planificaciones[x];
+      let plani = (await Planificacione.query().where({id: element}).fetch()).toJSON()
+      //console.log(plani, '-*-')
+      if (!totales_por_year.hasOwnProperty(plani[0].anio)){
+        totales_por_year[plani[0].anio] = []
+        totales_por_year[plani[0].anio].push(plani[0])
+      } else {  
+        totales_por_year[plani[0].anio].push(plani[0])
+      }
+    }
+    var resp = totales_por_year[data.year]
+    //resp = resp.find(v => v.semana == data.week)
+    var totalActividades = []
+    console.log(resp, 'aqui')
+    for (let x = 0; x < resp.length; x++) {
+      const element = resp[x];
+      var fin = (await Actividade.query().where({id_planificacion: element.id, id_area: data.area}).fetch()).toJSON()
+      totalActividades = totalActividades.concat(fin)
+      //console.log(totalActividades, fin)
+    }
+    var info = {}
+    info.pm01 = totalActividades.filter(v => v.tipo == 'PM01')
+    info.pm01_si = info.pm01.filter(v => v.realizada == 'Si').length
+    info.pm01_no = info.pm01.filter(v => v.realizada == 'No').length
+
+    info.pm02 = totalActividades.filter(v => v.tipo == 'PM02')
+    info.pm02_si = info.pm02.filter(v => v.realizada == 'Si').length
+    info.pm02_no = info.pm02.filter(v => v.realizada == 'No').length
+   
+    info.pm03 = totalActividades.filter(v => v.tipo == 'PM03')
+    info.pm03hh = 0
+    for (let x = 0; x < info.pm03.length; x++) {
+      const element = info.pm03[x]
+      info.pm03hh += element.duracion_real
+    }
+    response.send({info, resp})
+  }
   async index ({ request, response, auth }) {
     const user = (await auth.getUser()).toJSON()
     let areas = (await Area.query().where({id_gerencia: user.remember_token}).fetch()).toJSON()
