@@ -16,13 +16,13 @@
             </div>
             <q-separator vertical color="black"/>
             <div class="column col-6">
-                <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
-                    <q-item-label class="text-h6 text-black text-weight-bolder">{{area.area ? area.area : 'Planta'}}</q-item-label>
-                    <div class="row">
-                        <q-select class="col-1 q-ml-xs" :disable="!area.area" rounded outlined label="Año" v-model="year" dense :options="years" style="width: 80px" @input="change"/>
-                        <q-select class="col-2 q-ml-xs" :disable="!year" rounded outlined label="Semana" v-model="week" dense :options="weeks" style="width: 110px" @input="infoFiltrada"/>
-                    </div>
+                <q-card class="bg-primary col items-center q-pa-sm q-ml-xs q-mb-sm justify-between" style="border-radius: 8px;">
+                    <q-item-label class="text-h6 text-center text-black text-weight-bolder">{{area.area ? area.area : 'Planta'}}</q-item-label>
                 </q-card>
+                <div class="row q-mb-sm">
+                    <q-select class="col q-mx-xs" :disable="!area.area" rounded outlined label="Año" v-model="year" dense :options="years" @input="change"/>
+                    <q-select class="col q-mx-xs" :disable="!year" rounded outlined label="Semana" v-model="week" dense :options="weeks" @input="infoFiltrada"/>
+                </div>
                 <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
                     <q-item-label class="text-black text-weight-bolder">Actividades Planificadas</q-item-label>
                 </q-card>
@@ -117,7 +117,9 @@
                     <q-item-section>
                         <q-item-label class="text-black text-weight-bolder">{{user.name}}</q-item-label>
                     </q-item-section>
-                    <q-btn flat @click="$router.push('/login')" round dense icon="logout" size="8px"/>
+                    <q-btn flat @click="$router.push('/login')" round dense icon="logout" size="8px">
+                        <q-tooltip>Cerrar Sesión</q-tooltip>
+                    </q-btn>
                 </q-card>
                 <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
                         <q-item-label class="text-black text-weight-bolder">Resumen del Año</q-item-label>
@@ -221,8 +223,8 @@
                             <div class="q-pa-xs row text-h6 text-center justify-center">Plantas</div>
                             <div style="width: 100%">
                                 <q-list padding class="text-black">
-                                    <q-item clickable v-ripple :active="seleccion === i" v-for="(i, index) in 5" :key="index" @click="mostrarDatos(i)" active-class="my-menu-link">
-                                        <q-item-section>{{i}}</q-item-section>
+                                    <q-item clickable v-ripple :active="seleccion === i" v-for="(i, index) in plantas" :key="index" @click="mostrarDatos(i)" active-class="my-menu-link">
+                                        <q-item-section>{{i.area}}</q-item-section>
                                     </q-item>
                                 </q-list>
                             </div>
@@ -367,7 +369,6 @@ export default {
         ['Mes', 20, 80, '']
       ],
       seleccion: '',
-      movil: true,
       drawerLeft: false,
       chartOptions: {
         title: 'Porcentaje de adherencia al plan semanal',
