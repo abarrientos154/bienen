@@ -2,11 +2,12 @@
     <div>
         <div class="q-pa-sm row justify-between" style="height: 100%;" v-if="pp">
             <div class="column col-2">
-                <div class="q-mb-md row justify-center">
-                    <q-img :src="url" spinner-color="white" style="height: auto; width: 50px"/>
+                <div class="q-py-sm q-mb-sm row justify-center bg-blue-10">
+                    <q-img :src="url" spinner-color="white" style="height: auto; width: 75px"/>
                 </div>
-                <div class="q-pa-md" style="width: 100%">
-                    <q-list bordered padding class="rounded-borders text-primary">
+                <div class="q-py-xs row text-center justify-center">Plantas</div>
+                <div style="width: 100%">
+                    <q-list padding class="text-primary">
                         <q-item clickable v-ripple :active="seleccion === i" v-for="(i, index) in plantas" :key="index" @click="mostrarDatos(i)" active-class="my-menu-link">
                             <q-item-section>{{i.area}}</q-item-section>
                         </q-item>
@@ -116,16 +117,10 @@
                     <q-item-section>
                         <q-item-label class="text-black text-weight-bolder">{{user.name}}</q-item-label>
                     </q-item-section>
-                    <q-item-section avatar>
-                        <q-avatar class="bg-white" icon="person" size="40px"></q-avatar>
-                    </q-item-section>
-                    <q-btn class="q-ml-xs" round size="8px" color="secondary" icon="logout" @click="$router.push('/login')"/>
-                </q-card>
-                <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm" style="border-radius: 8px;">
-                    <q-avatar rounded icon="insert_photo" class=" bg-white" style="width: 100%; height: 100px;"></q-avatar>
+                    <q-btn flat @click="$router.push('/login')" round dense icon="logout" size="8px"/>
                 </q-card>
                 <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
-                        <q-item-label class="text-black text-weight-bolder">Resumen del Mes</q-item-label>
+                        <q-item-label class="text-black text-weight-bolder">Resumen del Año</q-item-label>
                 </q-card>
                 <div class="q-mb-sm">
                     <q-card class="bg-secondary items-center q-pa-xs q-ml-xs justify-between" style="border-radius: 0px;" >
@@ -210,27 +205,24 @@
                 <q-header reveal class="bg-primary">
                     <q-toolbar>
                         <q-btn flat @click="drawerLeft = !drawerLeft" round dense icon="menu" />
-                        <div class="row justify-center">
-                            <q-img :src="url" spinner-color="white" style="height: auto; width: 20px"/>
-                        </div>
-                        <q-toolbar-title>Bienen</q-toolbar-title>
-                        <q-item-section avatar>
-                            <q-avatar class="bg-white text-black" icon="person" size="40px"></q-avatar>
-                        </q-item-section>
-                        <q-btn round size="8px" color="secondary" icon="logout" @click="$router.push('/login')"/>
+                        <q-toolbar-title class="text-weight-bolder">Bienen</q-toolbar-title>
+                        <q-btn flat @click="$router.push('/login')" round dense icon="logout" size="8px"/>
                     </q-toolbar>
                 </q-header>
                 <q-drawer v-model="drawerLeft" :width="150" :breakpoint="700" bordered content-class="bg-grey-3">
                     <q-scroll-area class="fit">
                         <div class="q-pa-sm">
-                            <div class="q-mb-sm row justify-center">
-                                <q-img :src="url" spinner-color="white" style="height: auto; width: 50px"/>
+                            <div class="bg-blue-10">
+                                <div class="row q-py-sm justify-center">
+                                    <q-img :src="url" spinner-color="white" style="height: auto; width: 65px"/>
+                                </div>
+                                <div class="q-pa-sm row text-center justify-center text-white">{{user.name}}</div>
                             </div>
-                            <div class="q-mb-sm row text-center justify-center">{{area.area ? area.area : 'Plantas'}}</div>
-                            <div class="q-pa-sm" style="width: 100%">
-                                <q-list bordered padding class="rounded-borders text-primary">
-                                    <q-item clickable v-ripple :active="seleccion === i" v-for="(i, index) in plantas" :key="index" @click="mostrarDatos(i)" active-class="my-menu-link">
-                                        <q-item-section>{{i.area}}</q-item-section>
+                            <div class="q-pa-xs row text-h6 text-center justify-center">Plantas</div>
+                            <div style="width: 100%">
+                                <q-list padding class="text-black">
+                                    <q-item clickable v-ripple :active="seleccion === i" v-for="(i, index) in 5" :key="index" @click="mostrarDatos(i)" active-class="my-menu-link">
+                                        <q-item-section>{{i}}</q-item-section>
                                     </q-item>
                                 </q-list>
                             </div>
@@ -241,6 +233,10 @@
                     <q-page style="padding-top: 60px" class="q-pa-md">
                         <div class="row">
                             <div class="column col">
+                                <div class="row q-mb-sm">
+                                    <q-select class="col q-mx-xs" :disable="!area" rounded outlined label="Año" v-model="year" dense :options="years" @input="change"/>
+                                    <q-select class="col q-mx-xs" :disable="!year" rounded outlined label="Semana" v-model="week" dense :options="weeks" @input="infoFiltrada"/>
+                                </div>
                                 <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
                                     <q-item-label class="text-black text-weight-bolder">Actividades Planificadas</q-item-label>
                                 </q-card>
@@ -331,13 +327,7 @@
                             </div>
                         </div>
                         <q-page-sticky position="top" expand class="bg-secondary text-white">
-                            <q-toolbar>
-                                <q-toolbar-title class="text-black text-weight-bolder">{{area.area ? area.area : 'Planta'}}</q-toolbar-title>
-                                <div class="row">
-                                    <q-select class="col q-ml-xs" :disable="!area" rounded outlined label="Año" v-model="year" dense :options="years" @input="change"/>
-                                    <q-select class="col q-ml-xs" :disable="!year" rounded outlined label="Semana" v-model="week" dense :options="weeks" @input="infoFiltrada"/>
-                                </div>
-                            </q-toolbar>
+                            <div class="q-pa-sm text-h6 row text-center text-black justify-center">{{area.area ? area.area : 'Planta'}}</div>
                         </q-page-sticky>
                     </q-page>
                 </q-page-container>
@@ -466,6 +456,6 @@ export default {
 
 <style lang="sass">
 .my-menu-link
-  color: white
-  background: blue
+  color: black
+  background: lightseagreen
 </style>
