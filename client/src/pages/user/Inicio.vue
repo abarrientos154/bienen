@@ -195,7 +195,7 @@
                         <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
                             <q-item-section class="items-center">
                                 <q-item-label class="text-black">HH</q-item-label>
-                                <q-item-label class="text-black">{{resumen.pm03hh ? resumen.pm03hh / 60 : '00'}}</q-item-label>
+                                <q-item-label class="text-black">{{resumen.pm03hh ? (resumen.pm03hh / 60).toFixed(2) : '00'}}</q-item-label>
                             </q-item-section>
                         </q-card>
                     </div>
