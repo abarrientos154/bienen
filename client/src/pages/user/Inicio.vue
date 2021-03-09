@@ -27,24 +27,24 @@
                     <q-item-label class="text-black text-weight-bolder">Actividades Planificadas</q-item-label>
                 </q-card>
                 <div class="row justify-between">
-                    <q-card class="bg-info col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
+                    <q-card class="bg-blue-5 col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
                         <q-item-section>
                             <q-item-label class="text-black">Cantidad de PMO1: {{form.pm01 ? form.pm01.length : '00'}}</q-item-label>
                         </q-item-section>
                     </q-card>
-                    <q-card class="bg-info col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
+                    <q-card class="bg-blue-5 col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
                         <q-item-section>
                             <q-item-label class="text-black">Distribucion de HH: {{form.pm01hh ? form.pm01hh : '00'}}h</q-item-label>
                         </q-item-section>
                     </q-card>
                 </div>
                 <div class="row justify-between">
-                    <q-card class="bg-info col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
+                    <q-card class="bg-green-7 col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
                         <q-item-section>
                             <q-item-label class="text-black">Cantidad de PMO2: {{form.pm02 ? form.pm02.length : '00'}}</q-item-label>
                         </q-item-section>
                     </q-card>
-                    <q-card class="bg-info col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
+                    <q-card class="bg-green-7 col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
                         <q-item-section>
                             <q-item-label class="text-black">Distribucion de HH: {{form.pm02hh ? form.pm02hh : '00'}}h</q-item-label>
                         </q-item-section>
@@ -55,17 +55,17 @@
                 </q-card>
                 <div class="q-mb-sm row">
                     <div class="col">
-                        <q-card class="bg-secondary col items-center q-pa-xs q-ml-xs justify-between" style="border-radius: 0px;">
+                        <q-card class="bg-blue-9 col items-center q-pa-xs q-ml-xs justify-between" style="border-radius: 0px;">
                             <q-item-label class="text-center text-black">PMO1</q-item-label>
                         </q-card>
                         <div class="row">
-                            <q-card class="bg-info col items-center row q-pa-sm q-ml-xs justify-between" style="border-radius: 0px;">
+                            <q-card class="bg-blue-5 col items-center row q-pa-sm q-ml-xs justify-between" style="border-radius: 0px;">
                                 <q-item-section class="items-center">
                                     <q-item-label class="text-black">Hechos</q-item-label>
                                     <q-item-label class="text-black">{{form.pm01 ? form.pm01.filter(v => v.realizada == 'Si').length : '00'}}</q-item-label>
                                 </q-item-section>
                             </q-card>
-                            <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
+                            <q-card class="bg-blue-5 col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
                                 <q-item-section class="items-center">
                                     <q-item-label class="text-black">No Hechos</q-item-label>
                                     <q-item-label class="text-black">{{form.pm01 ? form.pm01.filter(v => v.realizada == 'No').length : '00'}}</q-item-label>
@@ -74,17 +74,17 @@
                         </div>
                     </div>
                     <div class="col">
-                        <q-card class="bg-secondary col items-center q-pa-xs q-mr-xs justify-between" style="border-radius: 0px;">
+                        <q-card class="bg-blue-9 col items-center q-pa-xs q-mr-xs justify-between" style="border-radius: 0px;">
                             <q-item-label class="text-center text-black">PMO2</q-item-label>
                         </q-card>
                         <div class="row">
-                            <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
+                            <q-card class="bg-green-7 col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
                                 <q-item-section class="items-center">
                                     <q-item-label class="text-black">Hechos</q-item-label>
                                     <q-item-label class="text-black">{{form.pm02 ? form.pm02.filter(v => v.realizada == 'Si').length : '00'}}</q-item-label>
                                 </q-item-section>
                             </q-card>
-                            <q-card class="bg-info col items-center row q-pa-sm q-mr-xs justify-between" style="border-radius: 0px;">
+                            <q-card class="bg-green-7 col items-center row q-pa-sm q-mr-xs justify-between" style="border-radius: 0px;">
                                 <q-item-section class="items-center">
                                     <q-item-label class="text-black">No Hechos</q-item-label>
                                     <q-item-label class="text-black">{{form.pm02 ? form.pm02.filter(v => v.realizada == 'No').length : '00'}}</q-item-label>
@@ -97,10 +97,10 @@
                     <q-item-label class="text-black text-weight-bolder">Actividades Imprevistas</q-item-label>
                 </q-card>
                 <div class="row justify-between">
-                    <q-card class="bg-info col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
+                    <q-card class="bg-orange-8 col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
                         <q-item-label class="text-black">Cantidad de PMO3: {{form.pm03 ? form.pm03.length : '00'}}</q-item-label>
                     </q-card>
-                    <q-card class="bg-info col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
+                    <q-card class="bg-orange-8 col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
                         <q-item-label class="text-black">Distribucion de HH: {{form.pm03hh ? form.pm03hh : '00'}}h</q-item-label>
                     </q-card>
                 </div>
@@ -243,24 +243,24 @@
                                     <q-item-label class="text-black text-weight-bolder">Actividades Planificadas</q-item-label>
                                 </q-card>
                                 <div class="row justify-between">
-                                    <q-card class="bg-info col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
+                                    <q-card class="bg-blue-5 col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
                                         <q-item-section>
                                             <q-item-label class="text-black">Cantidad de PMO1: {{form.pm01 ? form.pm01.length : '00'}}</q-item-label>
                                         </q-item-section>
                                     </q-card>
-                                    <q-card class="bg-info col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
+                                    <q-card class="bg-blue-5 col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
                                         <q-item-section>
                                             <q-item-label class="text-black">Distribucion de HH: {{form.pm01hh ? form.pm01hh : '00'}}h</q-item-label>
                                         </q-item-section>
                                     </q-card>
                                 </div>
                                 <div class="row justify-between">
-                                    <q-card class="bg-info col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
+                                    <q-card class="bg-green-7 col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
                                         <q-item-section>
                                             <q-item-label class="text-black">Cantidad de PMO2: {{form.pm02 ? form.pm02.length : '00'}}</q-item-label>
                                         </q-item-section>
                                     </q-card>
-                                    <q-card class="bg-info col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
+                                    <q-card class="bg-green-7 col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
                                         <q-item-section>
                                             <q-item-label class="text-black">Distribucion de HH: {{form.pm02hh ? form.pm02hh : '00'}}h</q-item-label>
                                         </q-item-section>
@@ -271,17 +271,17 @@
                                 </q-card>
                                 <div class="q-mb-sm row">
                                     <div class="col">
-                                        <q-card class="bg-secondary col items-center q-pa-xs q-ml-xs justify-between" style="border-radius: 0px;">
+                                        <q-card class="bg-blue-9 col items-center q-pa-xs q-ml-xs justify-between" style="border-radius: 0px;">
                                             <q-item-label class="text-center text-black">PMO1</q-item-label>
                                         </q-card>
                                         <div class="row">
-                                            <q-card class="bg-info col items-center row q-pa-sm q-ml-xs justify-between" style="border-radius: 0px;">
+                                            <q-card class="bg-blue-5 col items-center row q-pa-sm q-ml-xs justify-between" style="border-radius: 0px;">
                                                 <q-item-section class="items-center">
                                                     <q-item-label class="text-black">Hechos</q-item-label>
                                                     <q-item-label class="text-black">{{form.pm01 ? form.pm01.filter(v => v.realizada == 'Si').length : '00'}}</q-item-label>
                                                 </q-item-section>
                                             </q-card>
-                                            <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
+                                            <q-card class="bg-blue-5 col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
                                                 <q-item-section class="items-center">
                                                     <q-item-label class="text-black">No Hechos</q-item-label>
                                                     <q-item-label class="text-black">{{form.pm01 ? form.pm01.filter(v => v.realizada == 'No').length : '00'}}</q-item-label>
@@ -290,17 +290,17 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <q-card class="bg-secondary col items-center q-pa-xs q-mr-xs justify-between" style="border-radius: 0px;">
+                                        <q-card class="bg-blue-9 col items-center q-pa-xs q-mr-xs justify-between" style="border-radius: 0px;">
                                             <q-item-label class="text-center text-black">PMO2</q-item-label>
                                         </q-card>
                                         <div class="row">
-                                            <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
+                                            <q-card class="bg-green-7 col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
                                                 <q-item-section class="items-center">
                                                     <q-item-label class="text-black">Hechos</q-item-label>
                                                     <q-item-label class="text-black">{{form.pm02 ? form.pm02.filter(v => v.realizada == 'Si').length : '00'}}</q-item-label>
                                                 </q-item-section>
                                             </q-card>
-                                            <q-card class="bg-info col items-center row q-pa-sm q-mr-xs justify-between" style="border-radius: 0px;">
+                                            <q-card class="bg-green-7 col items-center row q-pa-sm q-mr-xs justify-between" style="border-radius: 0px;">
                                                 <q-item-section class="items-center">
                                                     <q-item-label class="text-black">No Hechos</q-item-label>
                                                     <q-item-label class="text-black">{{form.pm02 ? form.pm02.filter(v => v.realizada == 'No').length : '00'}}</q-item-label>
@@ -313,10 +313,10 @@
                                     <q-item-label class="text-black text-weight-bolder">Actividades Imprevistas</q-item-label>
                                 </q-card>
                                 <div class="row justify-between">
-                                    <q-card class="bg-info col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
+                                    <q-card class="bg-orange-8 col-5 items-center row q-pa-sm q-ml-xs q-mb-sm justify-between">
                                         <q-item-label class="text-black">Cantidad de PMO3: {{form.pm03 ? form.pm03.length : '00'}}</q-item-label>
                                     </q-card>
-                                    <q-card class="bg-info col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
+                                    <q-card class="bg-orange-8 col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
                                         <q-item-label class="text-black">Distribucion de HH: {{form.pm03hh ? form.pm03hh : '00'}}h</q-item-label>
                                     </q-card>
                                 </div>
