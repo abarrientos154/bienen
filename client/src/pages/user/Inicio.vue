@@ -20,7 +20,7 @@
                     <q-item-label class="text-h6 text-center text-black text-weight-bolder">{{area.area ? area.area : 'Planta'}}</q-item-label>
                 </q-card>
                 <div class="row q-mb-sm">
-                    <q-select class="col q-mx-xs" :disable="!area" rounded outlined label="Año" v-model="year" dense :options="years" @input="change"/>
+                    <q-select class="col q-mx-xs" :disable="!area.area" rounded outlined label="Año" v-model="year" dense :options="years" @input="change"/>
                     <q-select class="col q-mx-xs" :disable="!year" rounded outlined label="Semana" v-model="week" dense :options="weeks" @input="infoFiltrada"/>
                 </div>
                 <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
@@ -132,13 +132,13 @@
                         <q-card class="bg-info col items-center row q-pa-sm q-ml-xs justify-between" style="border-radius: 0px;">
                             <q-item-section class="items-center">
                                 <q-item-label class="text-black">Hechos</q-item-label>
-                                <q-item-label class="text-black">00</q-item-label>
+                                <q-item-label class="text-black">{{resumen.pm01_si ? resumen.pm01_si : '00'}}</q-item-label>
                             </q-item-section>
                         </q-card>
                         <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
                             <q-item-section class="items-center">
                                 <q-item-label class="text-black">No Hechos</q-item-label>
-                                <q-item-label class="text-black">00</q-item-label>
+                                <q-item-label class="text-black">{{resumen.pm01_no ? resumen.pm01_no : '00'}}</q-item-label>
                             </q-item-section>
                         </q-card>
                     </div>
@@ -151,13 +151,13 @@
                         <q-card class="bg-info col items-center row q-pa-sm q-ml-xs justify-between" style="border-radius: 0px;">
                             <q-item-section class="items-center">
                                 <q-item-label class="text-black">Hechos</q-item-label>
-                                <q-item-label class="text-black">00</q-item-label>
+                                <q-item-label class="text-black">{{resumen.pm02_si ? resumen.pm02_si : '00'}}</q-item-label>
                             </q-item-section>
                         </q-card>
                         <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
                             <q-item-section class="items-center">
                                 <q-item-label class="text-black">No Hechos</q-item-label>
-                                <q-item-label class="text-black">00</q-item-label>
+                                <q-item-label class="text-black">{{resumen.pm02_no ? resumen.pm02_no : '00'}}</q-item-label>
                             </q-item-section>
                         </q-card>
                     </div>
@@ -170,13 +170,13 @@
                         <q-card class="bg-info col items-center row q-pa-sm q-ml-xs justify-between" style="border-radius: 0px;">
                             <q-item-section class="items-center">
                                 <q-item-label class="text-black">PMO1</q-item-label>
-                                <q-item-label class="text-black">00</q-item-label>
+                                <q-item-label class="text-black">{{resumen.pm01 ? resumen.pm01.length : '00'}}</q-item-label>
                             </q-item-section>
                         </q-card>
                         <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
                             <q-item-section class="items-center">
                                 <q-item-label class="text-black">PMO2</q-item-label>
-                                <q-item-label class="text-black">00</q-item-label>
+                                <q-item-label class="text-black">{{resumen.pm02 ? resumen.pm02.length : '00'}}</q-item-label>
                             </q-item-section>
                         </q-card>
                     </div>
@@ -189,13 +189,13 @@
                         <q-card class="bg-info col items-center row q-pa-sm q-ml-xs justify-between" style="border-radius: 0px;">
                             <q-item-section class="items-center">
                                 <q-item-label class="text-black">Cantidad</q-item-label>
-                                <q-item-label class="text-black">00</q-item-label>
+                                <q-item-label class="text-black">{{resumen.pm03 ? resumen.pm03.length : '00'}}</q-item-label>
                             </q-item-section>
                         </q-card>
                         <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
                             <q-item-section class="items-center">
                                 <q-item-label class="text-black">HH</q-item-label>
-                                <q-item-label class="text-black">00</q-item-label>
+                                <q-item-label class="text-black">{{resumen.pm03hh ? resumen.pm03hh : '00'}}</q-item-label>
                             </q-item-section>
                         </q-card>
                     </div>
@@ -236,7 +236,7 @@
                         <div class="row">
                             <div class="column col">
                                 <div class="row q-mb-sm">
-                                    <q-select class="col q-mx-xs" :disable="!area" rounded outlined label="Año" v-model="year" dense :options="years" @input="change"/>
+                                    <q-select class="col q-mx-xs" :disable="!area.area" rounded outlined label="Año" v-model="year" dense :options="years" @input="change"/>
                                     <q-select class="col q-mx-xs" :disable="!year" rounded outlined label="Semana" v-model="week" dense :options="weeks" @input="infoFiltrada"/>
                                 </div>
                                 <q-card class="bg-primary items-center row q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
@@ -378,7 +378,8 @@ export default {
         isStacked: 'percent',
         vAxis: { minValue: 0, ticks: [0, 0.25, 0.5, 0.75, 1] }
       },
-      pp: ''
+      pp: '',
+      resumen: {}
     }
   },
   mounted () {
@@ -416,7 +417,21 @@ export default {
         this.$q.loading.hide()
       })
     },
+    infoFiltradaAnnio () {
+      this.$q.loading.show({
+        message: 'Cargando Datos'
+      })
+      this.$api.post('info_filtrada_annio', { year: this.year, area: this.area.id }).then(v => {
+        if (v) {
+          this.resumen = v.info
+          console.log(this.resumen)
+          this.$q.loading.hide()
+        }
+        this.$q.loading.hide()
+      })
+    },
     change () {
+      this.infoFiltradaAnnio()
       console.log(this.allData, this.year)
       this.weeks = this.allData.data[this.year].sort(function (a, b) {
         return a - b

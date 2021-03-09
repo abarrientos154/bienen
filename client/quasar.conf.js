@@ -117,8 +117,8 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'bienen-eiche',
-        short_name: 'bienen-eiche',
+        name: 'Bienen App',
+        short_name: 'Bienen App',
         description: 'a eiche app',
         display: 'standalone',
         orientation: 'portrait',
