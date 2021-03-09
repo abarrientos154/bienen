@@ -34,7 +34,7 @@
                     </q-card>
                     <q-card class="bg-blue-5 col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
                         <q-item-section>
-                            <q-item-label class="text-black">Distribucion de HH: {{form.pm01hh ? form.pm01hh : '00'}}h</q-item-label>
+                            <q-item-label class="text-black">Distribucion de HH: {{form.pm01hh ? (form.pm01hh / 60).toFixed(2) : '00'}}h</q-item-label>
                         </q-item-section>
                     </q-card>
                 </div>
@@ -46,7 +46,7 @@
                     </q-card>
                     <q-card class="bg-green-7 col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
                         <q-item-section>
-                            <q-item-label class="text-black">Distribucion de HH: {{form.pm02hh ? form.pm02hh : '00'}}h</q-item-label>
+                            <q-item-label class="text-black">Distribucion de HH: {{form.pm02hh ? (form.pm02hh / 60).toFixed(2) : '00'}}h</q-item-label>
                         </q-item-section>
                     </q-card>
                 </div>
@@ -101,7 +101,7 @@
                         <q-item-label class="text-black">Cantidad de PMO3: {{form.pm03 ? form.pm03.length : '00'}}</q-item-label>
                     </q-card>
                     <q-card class="bg-orange-8 col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
-                        <q-item-label class="text-black">Distribucion de HH: {{form.pm03hh ? form.pm03hh : '00'}}h</q-item-label>
+                        <q-item-label class="text-black">Distribucion de HH: {{form.pm03hh ? (form.pm03hh / 60).toFixed(2) : '00'}}h</q-item-label>
                     </q-card>
                 </div>
                 <q-card class="bg-primary items-center q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
@@ -195,7 +195,7 @@
                         <q-card class="bg-info col items-center row q-pa-sm justify-between" style="border-radius: 0px;">
                             <q-item-section class="items-center">
                                 <q-item-label class="text-black">HH</q-item-label>
-                                <q-item-label class="text-black">{{resumen.pm03hh ? resumen.pm03hh : '00'}}</q-item-label>
+                                <q-item-label class="text-black">{{resumen.pm03hh ? resumen.pm03hh / 60 : '00'}}</q-item-label>
                             </q-item-section>
                         </q-card>
                     </div>
@@ -250,7 +250,7 @@
                                     </q-card>
                                     <q-card class="bg-blue-5 col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
                                         <q-item-section>
-                                            <q-item-label class="text-black">Distribucion de HH: {{form.pm01hh ? form.pm01hh : '00'}}h</q-item-label>
+                                            <q-item-label class="text-black">Distribucion de HH: {{form.pm01hh ? (form.pm01hh / 60).toFixed(2) : '00'}}h</q-item-label>
                                         </q-item-section>
                                     </q-card>
                                 </div>
@@ -262,7 +262,7 @@
                                     </q-card>
                                     <q-card class="bg-green-7 col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
                                         <q-item-section>
-                                            <q-item-label class="text-black">Distribucion de HH: {{form.pm02hh ? form.pm02hh : '00'}}h</q-item-label>
+                                            <q-item-label class="text-black">Distribucion de HH: {{form.pm02hh ? (form.pm02hh / 60).toFixed(2) : '00'}}h</q-item-label>
                                         </q-item-section>
                                     </q-card>
                                 </div>
@@ -317,7 +317,7 @@
                                         <q-item-label class="text-black">Cantidad de PMO3: {{form.pm03 ? form.pm03.length : '00'}}</q-item-label>
                                     </q-card>
                                     <q-card class="bg-orange-8 col-6 items-center row q-pa-sm q-mr-xs q-mb-sm justify-between">
-                                        <q-item-label class="text-black">Distribucion de HH: {{form.pm03hh ? form.pm03hh : '00'}}h</q-item-label>
+                                        <q-item-label class="text-black">Distribucion de HH: {{form.pm03hh ? (form.pm03hh / 60).toFixed(2) : '00'}}h</q-item-label>
                                     </q-card>
                                 </div>
                                 <q-card class="bg-primary items-center q-pa-sm q-mx-xs q-mb-sm justify-between" style="border-radius: 8px;">
